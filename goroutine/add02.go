@@ -1,21 +1,22 @@
 package main
 
-// 输出子协程结果方式01
-// @fixme 方式2 请看 memory.go
+// 验证协程是并发执行的
 import (
 	"fmt"
 	"time"
 )
 
-func add02(a, b int) {
+func add03(a, b int) {
 	var c = a + b
 	fmt.Printf("%d + %d = %d\n", a, b, c)
+	time.Sleep(3e9) // 休眠3秒 遇到阻塞 进行协程切换
 }
 
 func main() {
-	go add02(1, 2)
-	time.Sleep(1e9) // 等待 1s
+	for i := 0; i < 10; i++ {
+		go add03(1, i)
+	}
+	time.Sleep(1e9) // 等待1s
 }
-// 要显示出子协程的打印结果，一种方式是在主协程中等待足够长的时间再退出，以便保证子协程中的所有代码执行完毕：
-// @fixme 存在的问题 对于这种加法操作 等待1s肯定够了 但是如果对于 发邮件 数据库连接之类的操作 很难预估时间的  这种方式将不奏效
-// @fixme 方式2 请看 memory.go
+
+// 结果不是按照严格的意义的顺序执行的 而是乱序的
