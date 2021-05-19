@@ -1,4 +1,4 @@
-package g20210518
+package main
 
 import (
 	"fmt"
