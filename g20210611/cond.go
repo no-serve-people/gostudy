@@ -6,52 +6,55 @@ import (
 	"time"
 )
 
-func main()  {
+var group int
 
-	mutex := sync.Mutex{}
-	var cond = sync.NewCond(&mutex)
-	mail := 1
-	go func() {
-		for count := 0; count <= 15; count ++{
-			time.Sleep(time.Second)
-			mail = count
-			cond.Broadcast()
-		}
-	}()
-	// worker1
-	go func() {
-		for mail != 5 {          // 触发的条件，如果不等于5，就会进入cond.Wait()等待，此时cond.Broadcast()通知进来的时候，wait阻塞解除，进入下一个循环，此时发现mail != 5，跳出循环，开始工作。
-			cond.L.Lock()
-			cond.Wait()
-			cond.L.Unlock()
-		}
-		fmt.Println("worker1 started to work")
-		time.Sleep(3*time.Second)
-		fmt.Println("worker1 work end")
-	}()
-	// worker2
-	go func() {
-		for mail != 10 {
-			cond.L.Lock()
-			cond.Wait()
-			cond.L.Unlock()
-		}
-		fmt.Println("worker2 started to work")
-		time.Sleep(3*time.Second)
-		fmt.Println("worker2 work end")
-	}()
-	// worker3
-	go func() {
-		for mail != 10 {
-			cond.L.Lock()
-			cond.Wait()
-			cond.L.Unlock()
-		}
-		fmt.Println("worker3 started to work")
-		time.Sleep(3*time.Second)
-		fmt.Println("worker3 work end")
-	}()
-	select {
+var cond *sync.Cond
 
+func test1() {
+	fmt.Println("任务1")
+
+	for i := 0; i < 5; i++ {
+		group = i
+		cond.Broadcast()
+		time.Sleep(time.Millisecond * 10)
 	}
+}
+
+func test2() {
+	for group != 2 {
+		cond.L.Lock()
+		cond.Wait()
+		cond.L.Unlock()
+	}
+	fmt.Println("任务2")
+}
+
+func test3() {
+	for group != 3 {
+		cond.L.Lock()
+		cond.Wait()
+		cond.L.Unlock()
+	}
+	println("任务3")
+}
+
+func do(fs ...func()) *sync.WaitGroup {
+	wg := sync.WaitGroup{}
+
+	for _, f := range fs {
+		wg.Add(1)
+		go func(f func()) {
+			defer wg.Done()
+			f()
+		}(f)
+	}
+
+	return &wg
+}
+func main() {
+	cond = sync.NewCond(&sync.Mutex{})
+	wg := do(test1, test2, test3)
+
+	wg.Wait()
+
 }
