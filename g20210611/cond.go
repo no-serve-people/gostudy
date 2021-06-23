@@ -16,8 +16,9 @@ func test1() {
 	for i := 0; i < 5; i++ {
 		group = i
 		cond.Broadcast()
-		time.Sleep(time.Millisecond * 10)
+		time.Sleep(time.Millisecond * 1)
 	}
+
 }
 
 func test2() {
