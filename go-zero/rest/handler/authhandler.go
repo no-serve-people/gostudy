@@ -4,14 +4,16 @@ import (
 	"bufio"
 	"context"
 	"errors"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/rest/token"
 	"net"
 	"net/http"
 	"net/http/httputil"
+
+	"github.com/golang-jwt/jwt"
+	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/tal-tech/go-zero/rest/token"
 )
 
+// jwt 相关参数
 const (
 	jwtAudience    = "aud"
 	jwtExpire      = "exp"
@@ -34,6 +36,7 @@ type (
 		PrevSecret string
 		Callback   UnauthorizedCallback
 	}
+
 	// UnauthorizedCallback defines the method of unauthorized callback.
 	UnauthorizedCallback func(w http.ResponseWriter, r *http.Request, err error)
 	// AuthorizeOption defines the method to customize an AuthorizeOptions.
@@ -46,6 +49,7 @@ func Authorize(secret string, opts ...AuthorizeOption) func(http.Handler) http.H
 	for _, opt := range opts {
 		opt(&authOpts)
 	}
+
 	parser := token.NewTokenParser()
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -109,11 +113,12 @@ func unauthorized(w http.ResponseWriter, r *http.Request, err error, callback Un
 	} else {
 		detailAuthLog(r, noDetailReason)
 	}
+
+	writer.WriteHeader(http.StatusUnauthorized)
+
 	if callback != nil {
 		callback(writer, r, err)
 	}
-
-	writer.WriteHeader(http.StatusUnauthorized)
 }
 
 type guardedResponseWriter struct {
@@ -121,22 +126,20 @@ type guardedResponseWriter struct {
 	wroteHeader bool
 }
 
-func (grw *guardedResponseWriter) Header() http.Header {
-	return grw.writer.Header()
-}
-
-func (grw *guardedResponseWriter) Write(body []byte) (int, error) {
-	return grw.writer.Write(body)
-}
-
 func newGuardedResponseWriter(w http.ResponseWriter) *guardedResponseWriter {
-	return &guardedResponseWriter{writer: w}
+	return &guardedResponseWriter{
+		writer: w,
+	}
 }
 
 func (grw *guardedResponseWriter) Flush() {
 	if flusher, ok := grw.writer.(http.Flusher); ok {
 		flusher.Flush()
 	}
+}
+
+func (grw *guardedResponseWriter) Header() http.Header {
+	return grw.writer.Header()
 }
 
 // Hijack implements the http.Hijacker interface.
@@ -149,10 +152,15 @@ func (grw *guardedResponseWriter) Hijack() (net.Conn, *bufio.ReadWriter, error) 
 	return nil, nil, errors.New("server doesn't support hijacking")
 }
 
+func (grw *guardedResponseWriter) Write(body []byte) (int, error) {
+	return grw.writer.Write(body)
+}
+
 func (grw *guardedResponseWriter) WriteHeader(statusCode int) {
 	if grw.wroteHeader {
 		return
 	}
+
 	grw.wroteHeader = true
 	grw.writer.WriteHeader(statusCode)
 }
