@@ -6,7 +6,7 @@ import (
 )
 
 func Test_isValid(t *testing.T) {
-	s := "){"
+	s := "{[]}"
 
 	fmt.Println(isValid(s))
 }

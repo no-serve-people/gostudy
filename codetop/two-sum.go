@@ -1,7 +1,5 @@
 package codetop
 
-import "strings"
-
 // 两数之和
 func twoSum(nums []int, target int) []int {
 	var index []int
@@ -19,28 +17,26 @@ func twoSum(nums []int, target int) []int {
 }
 
 // 有效的括号
-func isValid(s string) bool {
-	a := [3][2]string{
-		{"(", ")"},
-		{"[", "]"},
-		{"{", "}"},
-	}
+// 栈操作
+func isValid(str string) bool {
+	var stack []string
+	for _, item := range str {
+		s := string(item)
+		if s == "{" || s == "[" || s == "(" {
+			stack = append(stack, s)
+		} else {
+			if len(stack) == 0 {
+				return false
+			}
 
-	length := len([]rune(s))
-	for _, temp := range a {
-		index := strings.Index(s, temp[0])
-		if index >= 0 {
-			for i := 1;; i = i + 2 {
-				if i >= length {
-					return false
-				}
-				u := s[index+i]
-				if string(u) == temp[1] {
-					return true
-				}
+			top := stack[len(stack)-1]
+			if (top == "{" && s == "}") || (top == "[" && s == "]") || (top == "(" && s == ")") {
+				stack = stack[:len(stack)-1]
+			} else {
+				return false
 			}
 		}
 	}
 
-	return false
+	return len(stack) == 0
 }
