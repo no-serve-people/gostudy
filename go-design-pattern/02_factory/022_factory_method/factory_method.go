@@ -6,8 +6,7 @@ type IRuleConfigParser interface {
 }
 
 // jsonRuleConfigParser jsonRuleConfigParser
-type jsonRuleConfigParser struct {
-}
+type jsonRuleConfigParser struct{}
 
 // Parse Parse
 func (J jsonRuleConfigParser) Parse(data []byte) {
@@ -15,8 +14,7 @@ func (J jsonRuleConfigParser) Parse(data []byte) {
 }
 
 // yamlRuleConfigParser yamlRuleConfigParser
-type yamlRuleConfigParser struct {
-}
+type yamlRuleConfigParser struct{}
 
 // Parse Parse
 func (Y yamlRuleConfigParser) Parse(data []byte) {
@@ -29,8 +27,7 @@ type IRuleConfigParserFactory interface {
 }
 
 // yamlRuleConfigParserFactory yamlRuleConfigParser 的工厂类
-type yamlRuleConfigParserFactory struct {
-}
+type yamlRuleConfigParserFactory struct{}
 
 // CreateParser CreateParser
 func (y yamlRuleConfigParserFactory) CreateParser() IRuleConfigParser {
@@ -38,8 +35,7 @@ func (y yamlRuleConfigParserFactory) CreateParser() IRuleConfigParser {
 }
 
 // jsonRuleConfigParserFactory jsonRuleConfigParser 的工厂类
-type jsonRuleConfigParserFactory struct {
-}
+type jsonRuleConfigParserFactory struct{}
 
 // CreateParser CreateParser
 func (j jsonRuleConfigParserFactory) CreateParser() IRuleConfigParser {

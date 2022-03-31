@@ -38,5 +38,4 @@ func main() {
 	wg.Wait()
 
 	fmt.Println("main exit")
-
 }

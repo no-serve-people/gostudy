@@ -28,14 +28,14 @@ func main() {
 			break
 		}
 		fmt.Println(msg)
-		//从服务器端收字符串
+		// 从服务器端收字符串
 		n, err = conn.Read(buf)
 		if err != nil {
 			println("Read Buffer Error:", err.Error())
 			break
 		}
 		fmt.Println(string(buf[0:n]))
-		//等一秒钟
+		// 等一秒钟
 		time.Sleep(time.Second)
 	}
 }

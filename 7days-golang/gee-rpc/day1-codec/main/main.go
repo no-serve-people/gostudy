@@ -21,6 +21,7 @@ func startServer(addr chan string) {
 	addr <- l.Addr().String()
 	geerpc.Accept(l)
 }
+
 // 动手写RPC框架 - GeeRPC第一天 服务端与消息编码
 // https://geektutu.com/post/geerpc-day1.html
 func main() {

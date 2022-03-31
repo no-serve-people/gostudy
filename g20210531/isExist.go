@@ -31,7 +31,7 @@ func isExistV2(matrix [][]int, target int) bool {
 	for i < len(matrix) {
 		if j < len(matrix[i]) {
 			if target < matrix[i][j] {
-				i++ //由于 每一行都按照从左到右递增的顺序排序，target < 该行第一个元素，意味着也小于该行所有元素
+				i++ // 由于 每一行都按照从左到右递增的顺序排序，target < 该行第一个元素，意味着也小于该行所有元素
 				j = 0
 			} else if target > matrix[i][j] {
 				j++ // target > 该行第一个元素，就继续对比下一个
@@ -39,10 +39,10 @@ func isExistV2(matrix [][]int, target int) bool {
 				return true
 			}
 		} else {
-			return false //超出数组返回false
+			return false // 超出数组返回false
 		}
 	}
-	return false //超出matrix返回false
+	return false // 超出matrix返回false
 }
 
 func isExistV1(matrix [][]int, target int) bool {

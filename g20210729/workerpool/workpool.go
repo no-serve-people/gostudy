@@ -1,6 +1,7 @@
 package workerpool
 
 import "sync"
+
 // https://github.com/lgphone/workerpool/blob/main/workerpool.go
 // go 协程并发控制，协程错误接收
 type workerPool struct {

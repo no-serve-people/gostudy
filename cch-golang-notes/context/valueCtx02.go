@@ -10,7 +10,7 @@ import (
 type orderId2 int
 
 func main() {
-	var x = context.TODO()
+	x := context.TODO()
 	x = context.WithValue(x, orderId2(1), "1234")
 	x = context.WithValue(x, orderId2(2), "2345")
 

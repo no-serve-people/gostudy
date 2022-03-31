@@ -10,9 +10,9 @@ import (
 
 func Test_ConsistentHash(t *testing.T) {
 	virtualNodeList := []int{100, 150, 200}
-	//测试10台服务器
+	// 测试10台服务器
 	nodeNum := 10
-	//测试数据量100W
+	// 测试数据量100W
 	testCount := 1000000
 	for _, virtualNode := range virtualNodeList {
 		consistentHash := &Consistent{}
@@ -22,7 +22,7 @@ func Test_ConsistentHash(t *testing.T) {
 			consistentHash.Add(serverName, virtualNode)
 			distributeMap[serverName] = 0
 		}
-		//测试100W个数据分布
+		// 测试100W个数据分布
 		for i := 0; i < testCount; i++ {
 			testName := "testName"
 			serverName := consistentHash.GetNode(testName + strconv.Itoa(i))
@@ -44,13 +44,13 @@ func Test_ConsistentHash(t *testing.T) {
 	}
 }
 
-//获取标准差
+// 获取标准差
 func getStandardDeviation(list []float64) float64 {
 	var total float64
 	for _, item := range list {
 		total += item
 	}
-	//平均值
+	// 平均值
 	avg := total / float64(len(list))
 
 	var dTotal float64

@@ -4,6 +4,7 @@ import (
 	"sync"
 	"time"
 )
+
 // https://mp.weixin.qq.com/s/WvlVQuyMsPQzWJqBW6qQ_g
 // Go：无缓冲和有缓冲通道
 func main() {

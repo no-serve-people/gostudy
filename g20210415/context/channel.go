@@ -16,7 +16,7 @@ func main() {
 	// consumer
 	go func() {
 		ticker := time.NewTicker(1 * time.Second)
-		for _ = range ticker.C {
+		for range ticker.C {
 			select {
 			case <-done:
 				fmt.Println("child process interrupt...")

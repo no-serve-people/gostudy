@@ -6,8 +6,7 @@ type IDraw interface {
 }
 
 // Square 正方形
-type Square struct {
-}
+type Square struct{}
 
 // Draw Draw
 func (s Square) Draw() string {

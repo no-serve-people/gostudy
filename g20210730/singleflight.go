@@ -1,14 +1,15 @@
 package singleflight
 
 import "sync"
-//Group https://studygolang.com/articles/18835?fr=sidebar
+
+// Group https://studygolang.com/articles/18835?fr=sidebar
 // singleflight
 type Group struct {
 	mu sync.Mutex
 	m  map[string]*Call
 }
 
-//Call call代表需要被执行的函数
+// Call call代表需要被执行的函数
 type Call struct {
 	wg  sync.WaitGroup // 用于阻塞这个调用call的其他请求
 	val interface{}    // 函数执行后的结果

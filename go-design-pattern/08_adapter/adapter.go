@@ -8,8 +8,7 @@ type ICreateServer interface {
 }
 
 // AWSClient aws sdk
-type AWSClient struct {
-}
+type AWSClient struct{}
 
 // RunInstance 启动实例
 func (c *AWSClient) RunInstance(cpu, mem float64) error {
@@ -30,8 +29,7 @@ func (a *AwsClientAdapter) CreateServer(cpu, mem float64) error {
 }
 
 // AliyunClient aliyun sdk
-type AliyunClient struct {
-}
+type AliyunClient struct{}
 
 // CreateServer 启动实例
 func (c *AliyunClient) CreateServer(cpu, mem int) error {

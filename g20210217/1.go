@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	parse, _ := url.Parse("rtmps://live-api-s.facebook.com:443/rtmp/1318385771963181?s_bl=1&s_oil=0&s_psm=1&s_sw=0&s_tids=1&s_vt=api-s&a=AbyQIZiOeo12_otg")
 
 	fmt.Println("scheme", parse.Scheme)

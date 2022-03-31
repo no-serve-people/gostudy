@@ -4,7 +4,7 @@ import "fmt"
 
 // 协程简单示例
 func add(a, b int) {
-	var c = a + b
+	c := a + b
 	fmt.Printf("%d + %d = %d", a, b, c)
 }
 

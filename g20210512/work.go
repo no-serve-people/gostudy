@@ -1,10 +1,11 @@
 package main
 
 import (
-	"gostudy/g20210512/worker"
 	"log"
 	"sync"
 	"time"
+
+	"gostudy/g20210512/worker"
 )
 
 var langs = []string{

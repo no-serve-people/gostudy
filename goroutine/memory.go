@@ -19,7 +19,7 @@ func add04(a, b int, lock *sync.Mutex) {
 }
 
 func main() {
-	//runtime.GOMAXPROCS(1)
+	// runtime.GOMAXPROCS(1)
 	start := time.Now()
 	lock := &sync.Mutex{} // 互斥锁
 	for i := 0; i < 10; i++ {

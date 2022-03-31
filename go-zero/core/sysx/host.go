@@ -1,8 +1,9 @@
 package sysx
 
 import (
-	"github.com/tal-tech/go-zero/core/stringx"
 	"os"
+
+	"github.com/tal-tech/go-zero/core/stringx"
 )
 
 var hostname string

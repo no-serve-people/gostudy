@@ -1,14 +1,14 @@
 package token
 
 import (
-	"github.com/dgrijalva/jwt-go"
-	"github.com/dgrijalva/jwt-go/request"
-	"github.com/tal-tech/go-zero/core/timex"
-
 	"net/http"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/dgrijalva/jwt-go/request"
+	"github.com/tal-tech/go-zero/core/timex"
 )
 
 const claimHistoryResetDuration = time.Hour * 24
@@ -117,4 +117,3 @@ func WithResetDuration(duration time.Duration) ParseOption {
 		parser.resetDuration = duration
 	}
 }
-

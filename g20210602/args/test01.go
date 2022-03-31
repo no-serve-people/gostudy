@@ -7,8 +7,8 @@ func main() {
 	fmt.Printf("main ap brfore: len: %d cap:%d data:%+v\n", len(array), cap(array), array)
 	ap(array)
 	fmt.Printf("main ap after: len: %d cap:%d data:%+v\n", len(array), cap(array), array)
-
 }
+
 func ap(array []int) {
 	fmt.Printf("ap brfore:  len: %d cap:%d data:%+v\n", len(array), cap(array), array)
 	array[0] = 1

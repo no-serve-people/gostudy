@@ -10,8 +10,8 @@ import (
 // 使用 Go 每分钟处理百万请求
 // https://mp.weixin.qq.com/s/BPCxSYEr6ww2F0b9tqPdSQ
 const (
-	MaxWorker = 100 //随便设置值
-	MaxQueue02  = 200 // 随便设置值
+	MaxWorker  = 100 // 随便设置值
+	MaxQueue02 = 200 // 随便设置值
 )
 
 type Job struct {

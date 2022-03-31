@@ -14,7 +14,6 @@ func TestDemoFunc(t *testing.T) {
 		for _, e := range events {
 			eventChan <- e
 		}
-
 	}()
 	defer close(eventChan)
 	// 使用命令队列缓存命令

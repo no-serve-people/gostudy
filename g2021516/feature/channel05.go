@@ -18,7 +18,7 @@ func main() {
 		for i := 0; i < cnt; i++ {
 			channel <- fmt.Sprintf("message-%2d", i)
 		}
-		close(channel) //关闭Channel
+		close(channel) // 关闭Channel
 	}()
 	var more bool = true
 	var msg string

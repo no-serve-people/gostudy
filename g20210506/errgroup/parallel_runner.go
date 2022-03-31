@@ -101,18 +101,15 @@ loop:
 	}
 
 	return outputs, errors
-
 }
 
 // RunInParallel is the short cut for ParallelRunner's Run
 
 func RunInParallel(ctx context.Context, inputs []interface{}, worker func(context.Context, interface{}) (interface{}, error), workers int) ([]interface{}, error) {
-
 	runner := NewParallelRunner(workers, QuitOnError())
 	output, errors := runner.Run(ctx, inputs, worker)
 	if len(errors) != 0 {
 		return nil, errors[0]
-
 	}
 
 	return output, nil

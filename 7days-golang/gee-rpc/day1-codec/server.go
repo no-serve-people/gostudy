@@ -24,8 +24,7 @@ var DefaultOption = &Option{
 }
 
 // Server represents an RPC Server.
-type Server struct {
-}
+type Server struct{}
 
 // NewServer returns a new Server.
 func NewServer() *Server {
@@ -40,7 +39,6 @@ var DefaultServer = NewServer()
 func (server *Server) Accept(lis net.Listener) {
 	for {
 		conn, err := lis.Accept()
-
 		if err != nil {
 			log.Println("rpc server: accept error:", err)
 			return
@@ -79,15 +77,13 @@ func (server *Server) ServeConn(conn io.ReadWriteCloser) {
 }
 
 // invalidRequest is a placeholder for response argv when error occurs
-var invalidRequest = struct {
-}{}
+var invalidRequest = struct{}{}
 
 func (server *Server) serveCodec(cc codec.Codec) {
 	sending := new(sync.Mutex) // make sure to send a complete response
 	wg := new(sync.WaitGroup)  // wait until all request are handled
 	for {
 		req, err := server.readRequest(cc)
-
 		if err != nil {
 			if req == nil {
 				break // it's not possible to recover, so close the connection

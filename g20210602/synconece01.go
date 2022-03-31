@@ -30,6 +30,7 @@ func nestedDo() {
 		})
 	})
 }
+
 func nestedDo02() {
 	once1 := &sync.Once{}
 	once2 := &sync.Once{}

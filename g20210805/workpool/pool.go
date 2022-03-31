@@ -1,6 +1,7 @@
 package workpool
 
 import "sync"
+
 // Go语言的并发与WorkerPool - 第二部分
 // https://mp.weixin.qq.com/s/u3h8mfNja_SAnFP4vawCGg
 // Pool is the worker pool

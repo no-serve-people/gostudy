@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/coocood/freecache"
 	"runtime/debug"
+
+	"github.com/coocood/freecache"
 )
+
 // Go缓冲系列之-free-cache
 // https://mp.weixin.qq.com/s/SwGTdFe9AgHPGqkDbZoUjQ
 func main() {
@@ -30,5 +32,4 @@ func main() {
 
 	fmt.Println("deleted key ", affected)
 	fmt.Println("entry count ", cache.EntryCount())
-
 }

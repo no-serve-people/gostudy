@@ -16,6 +16,7 @@ func (s Set) Exist(k string) bool {
 	_, ok := s[k]
 	return ok
 }
+
 // https://mp.weixin.qq.com/s/8NJLe_11uvu22HfDjKqKjQ
 // 详解 Go 空结构体的 3 种使用场景
 func main() {

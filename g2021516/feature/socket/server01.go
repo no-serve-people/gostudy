@@ -7,10 +7,11 @@ import (
 )
 
 const RECV_BUF_LEN = 1024
+
 // https://coolshell.cn/articles/8489.html
 // GO 语言简介（下）— 特性
 func main() {
-	listener, err := net.Listen("tcp", "0.0.0.0:6666") //侦听在6666端口
+	listener, err := net.Listen("tcp", "0.0.0.0:6666") // 侦听在6666端口
 	if err != nil {
 		panic("error listening:" + err.Error())
 	}

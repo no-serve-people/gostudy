@@ -1,13 +1,14 @@
 package main
 
 import (
-	"gostudy/g20210512/pool"
 	"io"
 	"log"
 	"math/rand"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"gostudy/g20210512/pool"
 )
 
 // 常见的并发模式实现（二）：通过缓冲通道实现共享资源池
@@ -35,6 +36,7 @@ func createConnection() (io.Closer, error) {
 		id,
 	}, nil
 }
+
 func main() {
 	var wg sync.WaitGroup
 	wg.Add(maxGoroutines)

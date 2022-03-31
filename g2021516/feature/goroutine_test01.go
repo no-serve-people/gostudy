@@ -24,7 +24,7 @@ func main() {
 
 	var name string
 	for i := 0; i < 3; i++ {
-		name = fmt.Sprintf("go_%2d", i) //生成ID
+		name = fmt.Sprintf("go_%2d", i) // 生成ID
 		// 生成随机等待时间，从0-4秒
 		go routine(name, time.Duration(rand.Intn(5))*time.Second)
 	}

@@ -1,9 +1,10 @@
 package prototype
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestKeywords_Clone(t *testing.T) {

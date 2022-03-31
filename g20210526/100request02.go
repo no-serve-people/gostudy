@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 )
+
 // 使用 Go 每分钟处理百万请求
 // https://mp.weixin.qq.com/s/BPCxSYEr6ww2F0b9tqPdSQ
 const MaxQueue = 400
@@ -18,7 +19,7 @@ func payloadHandler02(w http.ResponseWriter, r *http.Request) {
 	// 业务过滤
 	// 请求body解析......
 	var p Payload
-	//go p.UpdateToS3()
+	// go p.UpdateToS3()
 	Queue <- p
 	w.Write([]byte("操作成功"))
 }

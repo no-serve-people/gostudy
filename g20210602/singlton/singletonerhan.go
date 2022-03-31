@@ -1,7 +1,6 @@
 package main
 
-type singleton struct {
-}
+type singleton struct{}
 
 var instance *singleton
 
@@ -14,4 +13,3 @@ func GetInstance() *singleton {
 
 	return instance
 }
-

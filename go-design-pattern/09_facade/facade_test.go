@@ -1,8 +1,9 @@
 package facade
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestUserService_Login(t *testing.T) {

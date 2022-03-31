@@ -8,20 +8,20 @@ import (
 	"sync"
 )
 
-//Consistent 一致性 hash 算法
+// Consistent 一致性 hash 算法
 // https://xie.infoq.cn/article/78043810ecc807d1896c6f3f2
 type Consistent struct {
-	//排序的hash虚拟结点
+	// 排序的hash虚拟结点
 	hashSortedNodes []uint32
 
-	//虚拟结点对应的结点信息
+	// 虚拟结点对应的结点信息
 	circle map[uint32]string
 
-	//已绑定的结点
+	// 已绑定的结点
 	nodes map[string]bool
-	//map读写锁
+	// map读写锁
 	sync.RWMutex
-	//虚拟结点数
+	// 虚拟结点数
 	virtualNodeCount int
 }
 
@@ -75,14 +75,14 @@ func (c *Consistent) Add(node string, virtualNodeCount int) error {
 	}
 
 	c.nodes[node] = true
-	//增加虚拟结点
+	// 增加虚拟结点
 	for i := 0; i < virtualNodeCount; i++ {
 		virtualKey := c.hashKey(node + strconv.Itoa(i))
 		c.circle[virtualKey] = node
 		c.hashSortedNodes = append(c.hashSortedNodes, virtualKey)
 	}
 
-	//虚拟结点排序
+	// 虚拟结点排序
 	sort.Slice(c.hashSortedNodes, func(i, j int) bool {
 		return c.hashSortedNodes[i] < c.hashSortedNodes[j]
 	})

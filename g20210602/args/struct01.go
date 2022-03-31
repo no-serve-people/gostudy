@@ -16,6 +16,7 @@ func main() {
 	modifiedAge02(per)
 	fmt.Println(per)
 }
+
 func modifiedAge02(per Person) {
 	fmt.Printf("函数里接收到struct的内存地址是：%p\n", &per)
 	per.Age = 10

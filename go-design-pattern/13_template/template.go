@@ -43,6 +43,7 @@ func NewTelecomSms() *TelecomSms {
 	tel.sms = &sms{ISMS: tel}
 	return tel
 }
+
 func (tel *TelecomSms) send(content string, phone int) error {
 	fmt.Println("send by telecom success")
 	return nil

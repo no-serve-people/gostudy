@@ -14,6 +14,7 @@ func NewTask(f func(interface{}) error, data interface{}) *Task {
 		f:    f,
 	}
 }
+
 // Go语言的并发与WorkerPool - 第二部分
 // https://mp.weixin.qq.com/s/u3h8mfNja_SAnFP4vawCGg
 func process(workerID int, task *Task) {

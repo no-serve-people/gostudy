@@ -6,8 +6,7 @@ type IRuleConfigParser interface {
 }
 
 // jsonRuleConfigParser jsonRuleConfigParser
-type jsonRuleConfigParser struct {
-}
+type jsonRuleConfigParser struct{}
 
 // Parse Parse
 func (J jsonRuleConfigParser) Parse(data []byte) {
@@ -15,8 +14,7 @@ func (J jsonRuleConfigParser) Parse(data []byte) {
 }
 
 // yamlRuleConfigParser yamlRuleConfigParser
-type yamlRuleConfigParser struct {
-}
+type yamlRuleConfigParser struct{}
 
 // Parse Parse
 func (Y yamlRuleConfigParser) Parse(data []byte) {

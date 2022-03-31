@@ -9,9 +9,8 @@ import (
 // golang的sync.Cond的用法
 // https://studygolang.com/articles/28072?fr=sidebar
 func main() {
-
 	mutex := sync.Mutex{}
-	var cond = sync.NewCond(&mutex)
+	cond := sync.NewCond(&mutex)
 	mail := 1
 	go func() {
 		for count := 0; count <= 15; count++ {

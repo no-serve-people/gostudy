@@ -2,12 +2,12 @@ package main
 
 import "math/rand"
 
-//LoadBalance 接口定义
+// LoadBalance 接口定义
 type LoadBalance interface {
-	//选择一个后端Server
-	//参数remove是需要排除选择的后端Server
+	// 选择一个后端Server
+	// 参数remove是需要排除选择的后端Server
 	Next(remove []string) *Server
-	//更新可用Server列表
+	// 更新可用Server列表
 	UpdateServers(servers []*Server)
 }
 
@@ -18,7 +18,7 @@ type Server struct {
 	// 主机名
 	Name string
 	Id   int
-	//主机是否在线
+	// 主机是否在线
 	Online bool
 }
 
@@ -35,7 +35,7 @@ func NewLoadBalanceRandom(servers []*Server) *LoadBalanceRandom {
 	return newBalance
 }
 
-//选择一个后端Server
+// 选择一个后端Server
 func (r *LoadBalanceRandom) Next() *Server {
 	if len(r.servers) == 0 {
 		return nil
@@ -50,7 +50,7 @@ func (r *LoadBalanceRandom) Get(key string) (*Server, error) {
 	return r.Next(), nil
 }
 
-//系统运行过程中，后端可用Server会更新
+// 系统运行过程中，后端可用Server会更新
 func (this *LoadBalanceRandom) UpdateServers(servers []*Server) {
 	newServers := make([]*Server, 0)
 	for _, e := range servers {

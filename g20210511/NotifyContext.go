@@ -20,6 +20,7 @@ LOOP:
 		}
 	}
 }
+
 func main() {
 	// 监控系统信号和创建 Context 现在一步搞定
 	ctx, stop := signal.NotifyContext(context.Background())

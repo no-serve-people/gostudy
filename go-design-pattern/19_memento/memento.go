@@ -29,7 +29,7 @@ func (in *InputText) Snapshot() *Snapshot {
 
 // Restore 从快照中恢复
 func (in *InputText) Restore(s *Snapshot) {
-	in.content=s.GetText()
+	in.content = s.GetText()
 }
 
 // Snapshot 快照，用于存储数据快照

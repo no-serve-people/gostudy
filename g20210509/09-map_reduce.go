@@ -18,7 +18,7 @@ func ageSum(users []map[string]string) int {
 }
 
 func main() {
-	var users = []map[string]string{
+	users := []map[string]string{
 		{
 			"name": "张三",
 			"age":  "18",

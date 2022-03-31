@@ -1,15 +1,19 @@
 package main
+
 // 并发编程包之 errgroup
 // https://mp.weixin.qq.com/s/NcrENqRyK9dYrOBBI0SGkA
 import (
 	"context"
 	"fmt"
-	"golang.org/x/sync/errgroup"
 	"os"
+
+	"golang.org/x/sync/errgroup"
 )
 
-type Result string
-type Search func(ctx context.Context, query string) (Result, error)
+type (
+	Result string
+	Search func(ctx context.Context, query string) (Result, error)
+)
 
 func fakeSearch(kind string) Search {
 	return func(_ context.Context, query string) (Result, error) {

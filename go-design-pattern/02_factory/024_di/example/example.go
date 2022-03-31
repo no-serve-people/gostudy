@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	di "gostudy/go-design-pattern/02_factory/024_di"
 )
 
@@ -53,7 +54,6 @@ func main() {
 	err := container.Invoke(func(a *A) {
 		fmt.Printf("%+v: %d", a, a.B.C.Num)
 	})
-
 	if err != nil {
 		panic(err)
 	}

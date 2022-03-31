@@ -16,7 +16,8 @@ func initPool() {
 		New: func() interface{} {
 			fmt.Println("Creating a new Person")
 			return new(Person)
-		}}
+		},
+	}
 }
 
 func main() {

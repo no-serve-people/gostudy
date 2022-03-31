@@ -1,4 +1,5 @@
 package main
+
 // https://mp.weixin.qq.com/s/szSxatDakPQMUA8Vm9u3qQ
 // 源码剖析sync.cond(条件变量的实现机制）
 import (

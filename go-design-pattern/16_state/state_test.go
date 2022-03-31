@@ -1,8 +1,9 @@
 package state
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMachine_GetStateName(t *testing.T) {

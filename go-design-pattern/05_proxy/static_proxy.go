@@ -11,8 +11,7 @@ type IUser interface {
 }
 
 // User 用户
-type User struct {
-}
+type User struct{}
 
 // Login 用户登录
 func (u *User) Login(username, password string) error {

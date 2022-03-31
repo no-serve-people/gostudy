@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/schollz/progressbar/v3"
 	"io"
 	"log"
 	"net/http"
@@ -14,7 +13,10 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/schollz/progressbar/v3"
 )
+
 // https://mp.weixin.qq.com/s/s7eYYZMzIp5rMq-rBQGXcQ
 // 【实战项目】使用 Go 语言开发一个并发文件下载器
 type Config struct {
@@ -96,6 +98,7 @@ func New(url string) (*downloader, error) {
 	config := &Config{Url: url, Concurrency: 1}
 	return NewFromConfig(config)
 }
+
 func NewFromConfig(config *Config) (*downloader, error) {
 	if config.Url == "" {
 		return nil, errors.New("Url is empty")
@@ -118,6 +121,7 @@ func NewFromConfig(config *Config) (*downloader, error) {
 	log.Printf("Output file: %s", filepath.Base(config.OutFilename))
 	return d, nil
 }
+
 func (d *downloader) getPartFilename(partNum int) string {
 	return d.config.OutFilename + ".part" + strconv.Itoa(partNum)
 }
@@ -157,7 +161,7 @@ func (d *downloader) simpleDownload() {
 	defer res.Body.Close()
 
 	// create the output file
-	f, err := os.OpenFile(d.config.OutFilename, os.O_CREATE|os.O_WRONLY, 0666)
+	f, err := os.OpenFile(d.config.OutFilename, os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -216,7 +220,7 @@ func (d *downloader) multiDownload(contentSize int) {
 }
 
 func (d *downloader) merge() {
-	destination, err := os.OpenFile(d.config.OutFilename, os.O_CREATE|os.O_WRONLY, 0666)
+	destination, err := os.OpenFile(d.config.OutFilename, os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -224,7 +228,7 @@ func (d *downloader) merge() {
 
 	for i := 1; i <= d.config.Concurrency; i++ {
 		filename := d.getPartFilename(i)
-		source, err := os.OpenFile(filename, os.O_RDONLY, 0666)
+		source, err := os.OpenFile(filename, os.O_RDONLY, 0o666)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -261,7 +265,7 @@ func (d *downloader) downloadPartial(rangeStart, rangeStop int, partialNum int, 
 	if d.config.Resume {
 		flags = flags | os.O_APPEND
 	}
-	f, err := os.OpenFile(outputPath, flags, 0666)
+	f, err := os.OpenFile(outputPath, flags, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}

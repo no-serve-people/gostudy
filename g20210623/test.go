@@ -34,13 +34,16 @@ package main
 
 import "time"
 
-var c = make(chan int)
-var a string
+var (
+	c = make(chan int)
+	a string
+)
 
 func f() {
 	a = "hello, world"
 	<-c
 }
+
 // happen before
 func main() {
 	c <- 0

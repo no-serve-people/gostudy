@@ -1,9 +1,10 @@
 package builder
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestNewResourcePoolConfig(t *testing.T) {
@@ -42,7 +43,8 @@ func TestNewResourcePoolConfig(t *testing.T) {
 				maxIdle:  9,
 				minIdle:  2,
 			},
-			wantErr: false},
+			wantErr: false,
+		},
 	}
 
 	for _, tt := range tests {

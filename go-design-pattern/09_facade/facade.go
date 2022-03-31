@@ -17,8 +17,7 @@ type IUserFacade interface {
 }
 
 // UserService UserService
-type UserService struct {
-}
+type UserService struct{}
 
 // Login 登录
 func (u UserService) Login(phone int, code int) (*User, error) {
@@ -38,7 +37,6 @@ func (u UserService) Register(phone int, code int) (*User, error) {
 // LoginOrRegister 登录或注册
 func (u UserService) LoginOrRegister(phone int, code int) (*User, error) {
 	user, err := u.Login(phone, code)
-
 	if err != nil {
 		return nil, err
 	}

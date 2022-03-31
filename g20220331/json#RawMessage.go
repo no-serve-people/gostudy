@@ -18,7 +18,6 @@ type Data2 struct {
 }
 
 func main() {
-
 	tmp := Data2{"World", 2}
 
 	b, err := json.Marshal(tmp)

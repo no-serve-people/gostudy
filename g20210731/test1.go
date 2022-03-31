@@ -5,6 +5,7 @@ import "log"
 type MyErr struct {
 	Msg string
 }
+
 // Base 生产环境遇到一个 Go 问题，整组人都懵逼了...
 // https://juejin.cn/post/6982038225514659870?from=main_page#comment
 func main() {

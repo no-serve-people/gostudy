@@ -5,6 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 )
+
 // https://coolshell.cn/articles/8489.html
 // GO 语言简介（下）— 特性
 func main() {

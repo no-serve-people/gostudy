@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	var users = []map[string]string{
+	users := []map[string]string{
 		{
 			"name": "张三",
 			"age":  "18",
@@ -58,6 +58,7 @@ func main() {
 	})
 	fmt.Printf("用户年龄累加结果是%d\n", sum)
 }
+
 func mapToString(items []map[string]string, f func(map[string]string) string) []string {
 	newSlice := make([]string, len(items))
 	for _, item := range items {
@@ -65,6 +66,7 @@ func mapToString(items []map[string]string, f func(map[string]string) string) []
 	}
 	return newSlice
 }
+
 func fieldSum(items []string, f func(string) int) int {
 	var sum int
 	for _, item := range items {
@@ -72,6 +74,7 @@ func fieldSum(items []string, f func(string) int) int {
 	}
 	return sum
 }
+
 func itemsFilter(items []map[string]string, f func(map[string]string) bool) []map[string]string {
 	newSlice := make([]map[string]string, len(items))
 	for _, item := range items {

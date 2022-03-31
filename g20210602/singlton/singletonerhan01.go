@@ -2,11 +2,12 @@ package main
 
 import "sync"
 
-type singleton02 struct {
-}
+type singleton02 struct{}
 
-var instance02 *singleton02
-var lock sync.Mutex
+var (
+	instance02 *singleton02
+	lock       sync.Mutex
+)
 
 // GetInstance02 饿汉模式
 // 整个方法加锁

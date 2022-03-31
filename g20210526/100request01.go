@@ -10,7 +10,6 @@ import (
 // https://mp.weixin.qq.com/s/BPCxSYEr6ww2F0b9tqPdSQ
 type Payload struct {
 	// 传啥不重要
-
 }
 
 func (p *Payload) UpdateToS3() error {
@@ -19,6 +18,7 @@ func (p *Payload) UpdateToS3() error {
 	fmt.Println("上传成功")
 	return nil
 }
+
 func payloadHandler(w http.ResponseWriter, r *http.Request) {
 	// 业务过滤
 	// 请求body解析......
@@ -26,6 +26,7 @@ func payloadHandler(w http.ResponseWriter, r *http.Request) {
 	go p.UpdateToS3()
 	w.Write([]byte("操作成功"))
 }
+
 func main() {
 	http.HandleFunc("/payload", payloadHandler)
 }

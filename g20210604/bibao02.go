@@ -16,7 +16,7 @@ func main() {
 		}()
 	}
 	// wait for all goroutines to complete before exiting
-	for _ = range values {
+	for range values {
 		<-done
 	}
 }

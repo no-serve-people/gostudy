@@ -1,9 +1,10 @@
 package singleton_test
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	singleton "gostudy/go-design-pattern/01_singleton"
-	"testing"
 )
 
 func TestGetLazyInstance(t *testing.T) {

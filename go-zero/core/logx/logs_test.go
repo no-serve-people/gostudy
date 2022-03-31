@@ -346,7 +346,8 @@ func put(b []byte) {
 }
 
 func doTestStructedLog(t *testing.T, level string, setup func(writer io.WriteCloser),
-	write func(...interface{})) {
+	write func(...interface{}),
+) {
 	const message = "hello there"
 	writer := new(mockWriter)
 	setup(writer)

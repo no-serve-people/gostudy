@@ -16,13 +16,11 @@ func (e *RPCError) Error() string {
 	return fmt.Sprintf("%s,code=%d", e.Message, e.Code)
 }
 
-type Cat struct {
-}
+type Cat struct{}
 
-type Duck interface {
-}
+type Duck interface{}
 
-//func (c Cat) Quack{}
+// func (c Cat) Quack{}
 
 ////func (c *Cat) Quack {
 ////

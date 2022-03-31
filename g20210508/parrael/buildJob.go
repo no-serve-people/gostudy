@@ -38,6 +38,7 @@ func build() error {
 
 	return nil
 }
+
 func main() {
 	build()
 }

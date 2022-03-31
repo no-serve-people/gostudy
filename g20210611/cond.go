@@ -18,7 +18,6 @@ func test1() {
 		cond.Broadcast()
 		time.Sleep(time.Millisecond * 1)
 	}
-
 }
 
 func test2() {
@@ -52,10 +51,10 @@ func do(fs ...func()) *sync.WaitGroup {
 
 	return &wg
 }
+
 func main() {
 	cond = sync.NewCond(&sync.Mutex{})
 	wg := do(test1, test2, test3)
 
 	wg.Wait()
-
 }

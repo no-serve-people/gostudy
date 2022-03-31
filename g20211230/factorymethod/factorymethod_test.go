@@ -11,9 +11,7 @@ func compute(factory OperatorFactory, a, b int) int {
 }
 
 func TestOperator(t *testing.T) {
-	var (
-		factory OperatorFactory
-	)
+	var factory OperatorFactory
 
 	factory = PlusOperatorFactory{}
 

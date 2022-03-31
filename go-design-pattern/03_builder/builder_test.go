@@ -1,9 +1,10 @@
 package builder
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestResourcePoolConfigBuilder_Build(t *testing.T) {

@@ -5,6 +5,7 @@ import (
 	"runtime"
 	"time"
 )
+
 // 源码剖析panic与recover，看不懂你打我好了！
 // https://mp.weixin.qq.com/s?__biz=MzIzMDU0MTA3Nw==&mid=2247484460&idx=1&sn=0838818da3a456f409f70dd321ffa2e6&scene=21#wechat_redirect
 func example1() {
@@ -41,7 +42,6 @@ func example4() {
 }
 
 func example5() {
-
 	defer fmt.Println("goroutine example5")
 	time.Sleep(5 * time.Second)
 }

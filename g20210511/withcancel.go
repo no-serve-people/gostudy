@@ -48,7 +48,7 @@ func watch1(ctx context.Context) {
 func watch2(ctx context.Context) {
 	for {
 		select {
-		case <-ctx.Done(): //取出值即说明是结束信号
+		case <-ctx.Done(): // 取出值即说明是结束信号
 			fmt.Println("收到信号，子context的协程退出,time=", time.Now().Unix())
 			return
 		default:

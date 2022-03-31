@@ -2,8 +2,10 @@ package singleton
 
 import "sync"
 
-var lazySingleton *SingleTon
-var once = &sync.Once{}
+var (
+	lazySingleton *SingleTon
+	once          = &sync.Once{}
+)
 
 // GetLazyInstance 懒汉式
 func GetLazyInstance() *SingleTon {
@@ -11,7 +13,6 @@ func GetLazyInstance() *SingleTon {
 		once.Do(func() {
 			lazySingleton = &SingleTon{}
 		})
-
 	}
 	return lazySingleton
 }

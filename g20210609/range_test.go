@@ -17,7 +17,7 @@ func BenchmarkRangeSpeed01(b *testing.B) {
 		for _, item := range items {
 			tmp = item.Id
 		}
-		//fmt.Println(tmp)
+		// fmt.Println(tmp)
 		_ = tmp
 	}
 }
@@ -27,11 +27,11 @@ func BenchmarkRangeSpeed02(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		var tmp int64
-		for k, _ := range items {
+		for k := range items {
 			item := items[k]
 			tmp = item.Id
 		}
-		//fmt.Println(tmp)
+		// fmt.Println(tmp)
 		_ = tmp
 	}
 }

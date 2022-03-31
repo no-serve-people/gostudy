@@ -10,7 +10,6 @@ func twoSum(nums []int, target int) []int {
 				return index
 			}
 		}
-
 	}
 
 	return nil

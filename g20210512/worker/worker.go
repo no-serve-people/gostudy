@@ -35,4 +35,3 @@ func (p *Pool) Shutdown() {
 	close(p.work)
 	p.wg.Wait()
 }
-

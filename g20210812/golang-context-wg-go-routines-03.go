@@ -38,7 +38,6 @@ func doAPICall(wg *sync.WaitGroup) error {
 	}()
 	// Block until the channel is populated
 	return <-c
-
 }
 
 func init() {

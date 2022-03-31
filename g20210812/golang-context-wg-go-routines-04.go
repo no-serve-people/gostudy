@@ -12,6 +12,7 @@ import (
 	"syscall"
 	"time"
 )
+
 // https://mp.weixin.qq.com/s/SUVHEei2vS6mrWsVJb4mbA
 // 使用context、WaitGroup优雅处理goroutine
 func doAPICall04(ctx context.Context, wg *sync.WaitGroup) error {
@@ -76,7 +77,7 @@ loop:
 		case <-ticker.C:
 			for n := 0; n < batchSize; n++ {
 				wg.Add(1)
-				go doAPICall04(ctx,&wg)
+				go doAPICall04(ctx, &wg)
 			}
 			wg.Wait()
 			logger.Printf("Completed doing %d things.", batchSize)

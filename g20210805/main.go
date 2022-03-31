@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gostudy/g20210805/workpool"
 	"time"
+
+	"gostudy/g20210805/workpool"
 )
 
 // Go语言的并发与WorkerPool - 第二部分

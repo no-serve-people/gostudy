@@ -7,7 +7,7 @@ import (
 )
 
 func add03(a, b int) {
-	var c = a + b
+	c := a + b
 	fmt.Printf("%d + %d = %d\n", a, b, c)
 	time.Sleep(3e9) // 休眠3秒 遇到阻塞 进行协程切换
 }

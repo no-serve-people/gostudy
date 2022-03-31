@@ -40,6 +40,7 @@ func (c *Context) Status(code int) {
 	c.StatusCode = code
 	c.Writer.WriteHeader(code)
 }
+
 func (c *Context) SetHeader(key string, value string) {
 	c.Writer.Header().Set(key, value)
 }
@@ -58,6 +59,7 @@ func (c *Context) JSON(code int, obj interface{}) {
 		http.Error(c.Writer, err.Error(), 500)
 	}
 }
+
 func (c *Context) Data(code int, data []byte) {
 	c.Status(code)
 	c.Writer.Write(data)
