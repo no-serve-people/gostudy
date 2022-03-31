@@ -1,1 +1,1 @@
-# golang 学习笔记
+# golang 训练笔记
