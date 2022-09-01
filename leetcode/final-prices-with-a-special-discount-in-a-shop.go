@@ -1,4 +1,4 @@
-package codetop
+package leetcode
 
 // 输入：prices = [8,4,6,2,3]
 // 输出：[4,2,4,2,3]

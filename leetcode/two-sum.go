@@ -1,4 +1,4 @@
-package codetop
+package leetcode
 
 // 两数之和
 func twoSum(nums []int, target int) []int {

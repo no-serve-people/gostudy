@@ -1,4 +1,4 @@
-package codetop
+package leetcode
 
 var srange = [2]int{}
 
