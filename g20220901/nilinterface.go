@@ -23,7 +23,7 @@ func testNilInterface2() {
 		return result
 	}
 
-	if res := doIt(-1); res != nil {
+	if res := doIt(1); res != nil {
 		fmt.Println("Good result: ", res)
 	} else {
 		fmt.Println("Bad result: ", res) // Bad result: <nil>
