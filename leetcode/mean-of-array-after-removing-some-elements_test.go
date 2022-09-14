@@ -11,7 +11,7 @@ func Test_trimMean(t *testing.T) {
 		args args
 		want float64
 	}{
-		{"1", args{[]int{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}}, 2.00000},
+		{"1", args{[]int{1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3}}, 2.00000},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
