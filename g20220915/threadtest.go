@@ -3,6 +3,7 @@ package g20220915
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 // 多线程卖票，100张票5个线程，保证不要超卖，尽可能使所有线程都在工作不要空闲
@@ -42,27 +43,23 @@ func testMutex() {
 // 使用channel
 func testChannel() {
 	ch := make(chan int, 100)
-
-	for i := 0; i < 100; i++ {
-		ch <- i
+	for j := 100; j > 0; j-- {
+		ch <- j
 	}
 
-	var wg sync.WaitGroup
-
-	wg.Add(5)
-
-	for j := 0; j < 5; j++ {
-		wg.Add(j)
-		go func(j int) {
-			defer wg.Done()
-			select {
-			case <-ch:
-				fmt.Printf("协程id%d 收入数据 %d \n", j, <-ch)
-			default:
-				fmt.Println("结束了")
+	for i := 0; i < 5; i++ {
+		go func(i int) {
+			for {
+				t := <-ch
+				if t > 0 {
+					fmt.Printf("买到票了，协程id%d 买到票%d \n", i, t)
+				} else {
+					fmt.Printf("票卖完了,协程id%d \n", i)
+					break
+				}
 			}
-		}(j)
+		}(i)
 	}
 
-	wg.Wait()
+	time.Sleep(5 * time.Second)
 }
