@@ -27,4 +27,3 @@ func worker2(ch1, ch2 <-chan int, stopCh chan struct{}) {
 		}
 	}
 }
-
