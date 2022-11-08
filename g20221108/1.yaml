@@ -19,6 +19,13 @@ spec:
             - containerPort: 80
 
 
+       {{ range $key, $value := .Attributes }}
+        - name: {{ $key }}
+          value: {{ $value }}
+      {{ end }}
 
-  { { range $key, $value := .Emails } }
-  { { $key } }: { { $value } }{ { - end } }
+  {{if .Address}}
+  Apt is {{.Address.Street}}.
+  {{else}}
+  Apt is NOT set.
+  {{end}}
