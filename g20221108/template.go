@@ -58,11 +58,11 @@ spec:
 			"key":   "hello",
 			"value": "json",
 		},
-		//Address: struct {
-		//	Street string
-		//}{
-		//	Street: "牛逼",
-		//},
+		Address: &struct {
+			Street string
+		}{
+			Street: "牛逼",
+		},
 	}
 	err = tmpl.Execute(os.Stdout, data)
 	if err != nil {
